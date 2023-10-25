@@ -30,4 +30,15 @@ export interface QueueControl {
      * Displays current song.
      */
     getCurentSong(): Song | undefined;
+
+    /**
+     * Sets current song.
+     * @param song The song to be set
+     */
+    setCurrentSong(song: Song): void;
+
+    /**
+     * Loads next song.
+     */
+    loadNextSong(): void;
 }

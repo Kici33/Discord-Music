@@ -14,12 +14,12 @@ export interface AudioControl {
     /**
      * Pauses the current song.
      */
-    pause(): Promise<void>;
+    pause(): void;
 
     /**
      * Resumes the current song in the queue.
      */
-    resume(): Promise<void>;
+    resume(): void;
 
     /**
      * Skips the current song or multiple songs.
@@ -29,21 +29,10 @@ export interface AudioControl {
     skip(amount: number | undefined, includeCurrentSong: boolean): Promise<void>;
 
     /**
-     * Changes the bitrate of the current song.
-     * @param bitrate The bitrate to change to
-     */
-    changeBitrate(bitrate: number): Promise<void>;
-
-    /**
-     * Gets the current bitrate of the player
-     */
-    getBitrate(): number;
-
-    /**
      * Changes the volume of the current song.
      * @param volume The volume to change to
      */
-    changeVolume(volume: number): Promise<void>;
+    changeVolume(volume: number): void;
 
     /**
      * Gets the current volume of the player
@@ -54,7 +43,7 @@ export interface AudioControl {
      * Loops the current song.
      * @param loop Whether to loop the song or not
      */
-    setLoop(loop: boolean): Promise<void>;
+    setLoop(loop: boolean): void;
 
     /**
      * Gets whether the current song is looped or not.
@@ -63,8 +52,8 @@ export interface AudioControl {
 
     /**
      * Seeks to a certain position in the current song.
-     * @param position The position to seek to
+     * @param time The position to seek to
      */
-    seek(position: number): Promise<void>;
+    seek(time: number): Promise<void>;
 
 }

@@ -31,5 +31,7 @@
     "spotify-url-info": "^3.2.9",
     "youtubei": "^1.1.2",
     "ytsr": "^3.8.4"
+    "discord-ytdl-core": "^5.0.4",
+    "discord.js": "^14.11.0"
   }
 }

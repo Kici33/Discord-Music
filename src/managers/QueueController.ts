@@ -38,4 +38,12 @@ export class QueueController implements QueueControl {
         return this._currentSong;
     }
 
+    setCurrentSong(song: Song): void {
+        this._currentSong = song;
+    }
+
+    loadNextSong(): void {
+        this._currentSong = this._queue.dequeue();
+    }
+
 }
