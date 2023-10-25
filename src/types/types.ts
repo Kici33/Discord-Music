@@ -43,4 +43,10 @@ export interface ClientOptions {
      */
     deafenOnJoin?: boolean;
 
+    /**
+     * Group for the voice connection.
+     * @default "default"
+     */
+    group?: string;
+
 }

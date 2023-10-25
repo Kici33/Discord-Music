@@ -1,11 +1,12 @@
 
-import { Client } from "discord.js"
+import { Client, Collection, Guild, Snowflake } from "discord.js"
 import { AudioController } from "./AudioController";
 import { QueueController } from "./QueueController";
 import { AudioControl } from "../interfaces/AudioControl";
 import { QueueControl } from "../interfaces/QueueControl";
 import { ClientController } from "./ClientController";
 import { AudioSettings, ClientOptions } from "../types/types";
+import EventEmitter from "events";
 
 /**
  * Class for managing the player.
@@ -20,12 +21,12 @@ export class Player {
     /**
      * The audio controller for this player.
      */
-    private _audioController: AudioControl;
+    private _audioController: Collection<Snowflake, AudioControl> = new Collection<Snowflake, AudioControl>();;
 
     /**
      * The queue controller for this player.
      */
-    private _queueController: QueueControl;
+    private _queueController: Collection<Snowflake, QueueControl> = new Collection<Snowflake, QueueControl>();;
 
     /**
      * The client controller for this player.
@@ -33,15 +34,31 @@ export class Player {
     private _clientController: ClientController;
 
     /**
+     * The event emitter for this player.
+     */
+    private _eventEmitter: EventEmitter = new EventEmitter();
+
+    /**
      * Creates a new player.
      * @param client The client that instantiated this class
+     * @param audioSettings The audio settings for this player
+     * @param clientOptions The client options for this player
      */
-    constructor(client: Client, audioSettings: AudioSettings = {}, clientOptions: ClientOptions = {}) {
+    constructor(client: Client, clientOptions: ClientOptions = {}) {
         this._client = client;
-
-        this._audioController = new AudioController(this, audioSettings);
-        this._queueController = new QueueController(this);   
         this._clientController = new ClientController(this, clientOptions);
+    }
+
+    intialize(guildId: Snowflake, audioSettings: AudioSettings = {}): void {
+        this._audioController.set(guildId, new AudioController(this, guildId, audioSettings));
+        this._queueController.set(guildId, new QueueController(this));
+    }
+
+    /**
+     * Gets the event emitter for this player.
+     */
+    get eventEmitter(): EventEmitter {
+        return this._eventEmitter;
     }
 
     /**
@@ -52,17 +69,26 @@ export class Player {
     }
 
     /**
-     * Gets the audio controller for this player.
+     * Gets the audio controller for the guild.
+     * @param guildId The guild id
      */
-    get audioController(): AudioControl {
-        return this._audioController;
+    getAudioController(guildId: Snowflake): AudioControl | undefined {
+        return this._audioController.get(guildId);
     }
 
     /**
-     * Gets the queue controller for this player.
+     * Gets the queue controller for this guild.
+     * @param guildId The guild id
      */
-    get queueController(): QueueControl {
-        return this._queueController;
+    getQueueController(guildId: Snowflake): QueueControl | undefined {
+        return this._queueController.get(guildId);
+    }
+
+    /**
+     * Gets the client controller for this player.
+     */
+    get clientController(): ClientController {
+        return this._clientController;
     }
     
 }

@@ -8,6 +8,8 @@ export class ClientController {
     private _leaveOnEmpty: boolean = false;
     private _leaveOnEnd: boolean = false;
     private _deafenOnJoin: boolean = true;
+
+    private _group: string = "default";
     
     constructor(player: Player, clientOptions: ClientOptions = {}) {
         this._player = player;
@@ -15,6 +17,8 @@ export class ClientController {
         this._leaveOnEmpty = clientOptions.leaveOnEmpty ?? this._leaveOnEmpty;
         this._leaveOnEnd = clientOptions.leaveOnEnd ?? this._leaveOnEnd;
         this._deafenOnJoin = clientOptions.deafenOnJoin ?? this._deafenOnJoin;
+
+        this._group = clientOptions.group ?? this._group;
     }
 
     get player(): Player {
@@ -33,4 +37,7 @@ export class ClientController {
         return this._deafenOnJoin;
     }
 
+    get group(): string {
+        return this.group;
+    }
 }
