@@ -35,14 +35,36 @@ export interface AudioControl {
     changeBitrate(bitrate: number): Promise<void>;
 
     /**
+     * Gets the current bitrate of the player
+     */
+    getBitrate(): number;
+
+    /**
      * Changes the volume of the current song.
      * @param volume The volume to change to
      */
     changeVolume(volume: number): Promise<void>;
 
     /**
+     * Gets the current volume of the player
+     */
+    getVolume(): number;
+
+    /**
      * Loops the current song.
      * @param loop Whether to loop the song or not
      */
     setLoop(loop: boolean): Promise<void>;
+
+    /**
+     * Gets the current loop status of the player
+     */
+    getLoop(): boolean;
+
+    /**
+     * Seeks to a certain position in the current song.
+     * @param position The position to seek to
+     */
+    seek(position: number): Promise<void>;
+
 }

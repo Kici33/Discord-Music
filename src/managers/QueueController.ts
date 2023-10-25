@@ -1,4 +1,5 @@
 import { QueueControl } from "../interfaces/QueueControl";
+import { Queue } from "../objects/Queue";
 import { Song } from "../objects/Song";
 import { Player } from "./Player";
 
@@ -7,7 +8,7 @@ export class QueueController implements QueueControl {
     public _player: Player;
     
     public _currentSong: Song | undefined;
-    public _queue: Song[] = [];
+    public _queue: Queue<Song> = new Queue<Song>();
 
     public _loop: boolean = false;
 
@@ -15,24 +16,24 @@ export class QueueController implements QueueControl {
         this._player = player;
     }
 
-    shuffle(): Promise<void> {
+    shuffle(): void {
         throw new Error("Method not implemented.");
     }
     
-    clearQueue(): Promise<void> {
-        throw new Error("Method not implemented.");
+    clearQueue(): void {
+        this._queue = new Queue<Song>();
     }
 
-    getQueue(): Promise<any> {
-        throw new Error("Method not implemented.");
+    getQueue(): Queue<Song> {
+        return this._queue;
     }
 
-    addSong(): Promise<void> {
-        throw new Error("Method not implemented.");
+    addSong(song: Song): void {
+        this._queue.enqueue(song);
     }
 
-    currentSong(): Promise<Song> {
-        throw new Error("Method not implemented.");
+    getCurentSong(): Song | undefined {
+        return this._currentSong;
     }
 
 }

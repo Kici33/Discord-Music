@@ -1,3 +1,4 @@
+import { Queue } from "../objects/Queue";
 import { Song } from "../objects/Song";
 
 /**
@@ -7,25 +8,26 @@ export interface QueueControl {
     /**
      * Shuffles the queue.
      */
-    shuffle(): Promise<void>;
+    shuffle(): void;
 
     /**
      * Clears the queue.
      */
-    clearQueue(): Promise<void>;
+    clearQueue(): void;
+
+    /**
+     * Add a song to the queue.
+     * @param song The song to add
+     */
+    addSong(song: Song): void;
 
     /**
      * Gets current queue.
      */
-    getQueue(): Promise<any>;
+    getQueue(): Queue<Song>;
 
     /**
-     * Add a song to the queue.
+     * Displays current song.
      */
-    addSong(): Promise<void>;
-
-    /**
-     * Display current song.
-     */
-    currentSong(): Promise<Song>;
+    getCurentSong(): Song | undefined;
 }

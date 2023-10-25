@@ -9,6 +9,20 @@ export class AudioController implements AudioControl {
         this._player = player;
     }
 
+    getBitrate(): number {
+        throw new Error("Method not implemented.");
+    }
+    getVolume(): number {
+        throw new Error("Method not implemented.");
+    }
+    getLoop(): boolean {
+        throw new Error("Method not implemented.");
+    }
+    
+    seek(position: number): Promise<void> {
+        throw new Error("Method not implemented.");
+    }
+
     play(actionedBy: string, query: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
