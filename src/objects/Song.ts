@@ -2,15 +2,15 @@ import { SongData } from "./SongData";
 
 export class Song {
 
-    private _author: string | undefined;
-    private _name: string | undefined;
-    private _url: string | undefined;
-    private _length: number | undefined;
+    private _author: string;
+    private _name: string;
+    private _url: string;
+    private _length: number;
     private _thumbnail: string | undefined;
     private _actionedBy: string | undefined;
     private _songData: SongData | undefined;
 
-    constructor(author: string | undefined, name: string | undefined, url: string | undefined, length: number | undefined, thumbnail: string | undefined, actionedBy: string | undefined, songData: SongData | undefined) {
+    constructor(author: string, name: string, url: string, length: number, thumbnail: string | undefined, actionedBy: string | undefined, songData: SongData | undefined) {
         this._author = author;
         this._name = name;
         this._url = url;
@@ -20,19 +20,19 @@ export class Song {
         this._songData = songData;
     }
 
-    get author(): string | undefined {
+    get author(): string {
         return this._author;
     }
 
-    get name(): string | undefined {
+    get name(): string {
         return this._name;
     }
 
-    get url(): string | undefined {
+    get url(): string {
         return this._url;
     }
 
-    get length(): number | undefined {
+    get length(): number {
         return this._length;
     }
 

@@ -32,7 +32,7 @@ export interface AudioControl {
      * Changes the volume of the current song.
      * @param volume The volume to change to
      */
-    changeVolume(volume: number): Promise<void>;
+    changeVolume(volume: number): void;
 
     /**
      * Gets the current volume of the player
@@ -43,7 +43,7 @@ export interface AudioControl {
      * Loops the current song.
      * @param loop Whether to loop the song or not
      */
-    setLoop(loop: boolean): Promise<void>;
+    setLoop(loop: boolean): void;
 
     /**
      * Gets whether the current song is looped or not.
@@ -52,8 +52,8 @@ export interface AudioControl {
 
     /**
      * Seeks to a certain position in the current song.
-     * @param position The position to seek to
+     * @param time The position to seek to
      */
-    seek(position: number): Promise<void>;
+    seek(time: number): Promise<void>;
 
 }

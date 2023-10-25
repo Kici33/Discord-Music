@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Kici33/Discord-Music#readme",
   "dependencies": {
     "@discordjs/voice": "^0.16.0",
+    "discord-ytdl-core": "^5.0.4",
     "discord.js": "^14.11.0"
   }
 }
