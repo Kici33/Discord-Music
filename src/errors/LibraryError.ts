@@ -20,5 +20,20 @@ export enum LibraryErrors {
     INVALID_GUILD_MEMBER = "Provided guild member is invalid!",
     INVALID_GUILD = "Provided guild is invalid!",
     INVALID_VOICE_CHANNEL = "Provided voice channel is invalid!",
+    UNKNOWN = 'Unknown',
+    QUEUE_DESTROYED = 'QueueDestroyed',
+    NOTHING_PLAYING = 'NothingPlaying',
+    UNKNOWN_VOICE = 'UnknownVoice',
+    CHANNEL_TYPE_INVALID = 'ChannelTypeInvalid',
+    VOICE_CONNECTION_ERROR = 'VoiceConnectionError',
+    NO_VOICE_CONNECTION = 'NoVoiceConnection',
+    UNKNOWN_REPEAT_MODE = 'UnknownRepeatMode',
+    RESOURCE_NOT_READY = 'ResourceNotReady',
+    SEARCH_NULL = 'SearchIsNull',
+    INVALID_PLAYLIST = 'InvalidPlaylist',
+    INVALID_SPOTIFY = 'InvalidSpotify',
+    INVALID_APPLE = 'InvalidApple',
+    UNKNOWN_SONG = 'UnknownSong',
+    INVALID_INDEX = 'InvalidIndex'
 
 }

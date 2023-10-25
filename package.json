@@ -25,6 +25,11 @@
   "homepage": "https://github.com/Kici33/Discord-Music#readme",
   "dependencies": {
     "@discordjs/voice": "^0.16.0",
-    "discord.js": "^14.11.0"
+    "apple-music-metadata": "^2.0.1",
+    "discord.js": "^14.11.0",
+    "isomorphic-unfetch": "^4.0.2",
+    "spotify-url-info": "^3.2.9",
+    "youtubei": "^1.1.2",
+    "ytsr": "^3.8.4"
   }
 }

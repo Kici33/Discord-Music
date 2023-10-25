@@ -50,3 +50,30 @@ export interface ClientOptions {
     group?: string;
 
 }
+
+export interface SearchOptions {
+    uploadDate?: 'hour'|'today'|'week'|'month'|'year';
+    duration?: 'short'|'long';
+    sortBy?: 'relevance'|'date'|'view count'|'rating';
+    timecode?: boolean;
+    seek?: number;
+    index?: number;
+    actionedBy?: string;
+}
+
+export interface PlaylistSearchOptions {
+    maxSongs?: number,
+    actionedBy?: string,
+    shuffle?: boolean,
+    index?: number,
+};
+
+export const DefaultSearchOptions: SearchOptions = {
+    sortBy: 'relevance',
+    timecode: false
+}
+
+export const DefaultPlaylistOptions: PlaylistSearchOptions = {
+    maxSongs: -1,
+    shuffle: false,
+};
