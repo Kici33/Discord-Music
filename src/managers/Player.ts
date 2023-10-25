@@ -11,8 +11,6 @@ export class Player {
     private _audioController: AudioController;
     private _queueController: QueueController;
 
-    private _playerOptions: PlayerOptions;
-
     constructor(client: Client) {
         this._client = client;
 
