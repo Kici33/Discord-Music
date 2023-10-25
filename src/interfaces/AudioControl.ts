@@ -14,12 +14,12 @@ export interface AudioControl {
     /**
      * Pauses the current song.
      */
-    pause(): Promise<void>;
+    pause(): void;
 
     /**
      * Resumes the current song in the queue.
      */
-    resume(): Promise<void>;
+    resume(): void;
 
     /**
      * Skips the current song or multiple songs.
@@ -27,17 +27,6 @@ export interface AudioControl {
      * @param includeCurrentSong Whether to include the current song in the amount
      */
     skip(amount: number | undefined, includeCurrentSong: boolean): Promise<void>;
-
-    /**
-     * Changes the bitrate of the current song.
-     * @param bitrate The bitrate to change to
-     */
-    changeBitrate(bitrate: number): Promise<void>;
-
-    /**
-     * Gets the current bitrate of the player
-     */
-    getBitrate(): number;
 
     /**
      * Changes the volume of the current song.

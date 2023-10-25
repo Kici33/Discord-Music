@@ -3,7 +3,9 @@ import { AudioControl } from "../interfaces/AudioControl";
 import { AudioSettings } from "../types/types";
 import { Player } from "./Player";
 import { LibraryError, LibraryErrors } from "../errors/LibraryError";
-import { DiscordGatewayAdapterImplementerMethods, DiscordGatewayAdapterLibraryMethods, VoiceConnection, joinVoiceChannel } from "@discordjs/voice";
+import { AudioPlayer, VoiceConnection, createAudioPlayer, joinVoiceChannel } from "@discordjs/voice";
+import { Queue } from "../objects/Queue";
+import { Song } from "../objects/Song";
 
 export class AudioController implements AudioControl {
 
@@ -16,6 +18,7 @@ export class AudioController implements AudioControl {
     private _volume: number = 50;
     private _loop: boolean = false;
 
+    private _audioPlayer: AudioPlayer;
     private _voiceConnection: VoiceConnection;
 
     constructor(player: Player, guildId: Snowflake, settings: AudioSettings = {}) {
@@ -48,68 +51,41 @@ export class AudioController implements AudioControl {
                 guildId: this._guildId,
                 adapterCreator: this._guild.voiceAdapterCreator,
             });
+            this._audioPlayer = createAudioPlayer();
         }
-        
-        
 
+        //TODO: Implement search function
+    }
 
+    getPlaybackState() {
+        if (!this._audioPlayer) throw new Error("No audio player found!");
+        return this._audioPlayer.state.status;
+    }
 
-        throw new Error("Method not implemented.");
+    pause(): void {
+        if (!this._audioPlayer) throw new Error("No audio player found!");
+        this._audioPlayer.pause(true);
+    }
+
+    resume(): void {
+        if (!this._audioPlayer) throw new Error("No audio player found!");
+        this._audioPlayer.unpause();
     }
 
 
+    skip(amount: number, includeCurrentSong?: boolean): Promise<void> {
+        const queueController = this.player.getQueueController(this._guildId)!;
+        while(amount - (includeCurrentSong ? 1 : 0) > 0 && !queueController.getQueue().isEmpty) {
+            queueController.getQueue().dequeue();
+            amount--;
+        }
 
+        //TODO: Implement audio player skip function
+        //TODO: Exit voice channel if queue is empty and leaveOnEnd is true
+        if (includeCurrentSong) queueController.loadNextSong();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    pause(): Promise<void> {
-        throw new Error("Method not implemented.");
+        return Promise.resolve();
     }
-
-
-    resume(): Promise<void> {
-        throw new Error("Method not implemented.");
-    }
-
-
-    skip(amount: number | undefined, includeCurrentSong: boolean): Promise<void> {
-        throw new Error("Method not implemented.");
-    }
-
-
-    changeBitrate(bitrate: number): Promise<void> {
-        throw new Error("Method not implemented.");
-    }
-
-
-    getBitrate(): number {
-        throw new Error("Method not implemented.");
-    }
-
     
     changeVolume(volume: number): Promise<void> {
         throw new Error("Method not implemented.");
