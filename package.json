@@ -1,0 +1,30 @@
+{
+  "name": "discord-music",
+  "version": "1.0.0",
+  "description": "Music Library for discordjs bots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kici33/Discord-Music.git"
+  },
+  "keywords": [
+    "Discord",
+    "Music",
+    "Library",
+    "Javascript",
+    "Typescript"
+  ],
+  "author": "Łukasz Kici33 Żołnierzak",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Kici33/Discord-Music/issues"
+  },
+  "homepage": "https://github.com/Kici33/Discord-Music#readme",
+  "dependencies": {
+    "@discordjs/voice": "^0.16.0",
+    "discord.js": "^14.11.0"
+  }
+}
