@@ -17,7 +17,7 @@ export interface QueueControl {
 
     /**
      * Add a song to the queue.
-     * @param song The song to add
+     * @param song The song to be added
      */
     addSong(song: Song): void;
 

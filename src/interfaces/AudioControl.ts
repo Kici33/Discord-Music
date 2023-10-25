@@ -57,9 +57,9 @@ export interface AudioControl {
     setLoop(loop: boolean): Promise<void>;
 
     /**
-     * Gets the current loop status of the player
+     * Gets whether the current song is looped or not.
      */
-    getLoop(): boolean;
+    isLooped(): boolean;
 
     /**
      * Seeks to a certain position in the current song.

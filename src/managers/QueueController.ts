@@ -5,17 +5,19 @@ import { Player } from "./Player";
 
 export class QueueController implements QueueControl {
 
-    public _player: Player;
+    private _player: Player;
     
-    public _currentSong: Song | undefined;
-    public _queue: Queue<Song> = new Queue<Song>();
-
-    public _loop: boolean = false;
+    private _currentSong: Song | undefined;
+    private _queue: Queue<Song> = new Queue<Song>();
 
     constructor(player: Player) {
         this._player = player;
     }
 
+    get player(): Player {
+        return this._player;
+    }
+    
     shuffle(): void {
         throw new Error("Method not implemented.");
     }
